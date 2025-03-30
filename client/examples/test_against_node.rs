@@ -12,7 +12,7 @@
 //! Core node.
 extern crate luckycoincore_rpc;
 
-use luckycoincore_rpc::{bitcoin, Auth, Client, Error, RpcApi};
+use luckycoincore_rpc::{luckycoin, Auth, Client, Error, RpcApi};
 
 fn main_result() -> Result<(), Error> {
     let mut args = std::env::args();
@@ -35,10 +35,10 @@ fn main_result() -> Result<(), Error> {
     println!("best block hash by height: {}", best_block_hash_by_height);
     assert_eq!(best_block_hash_by_height, best_block_hash);
 
-    let bitcoin_block: luckycoin::Block = rpc.get_by_id(&best_block_hash)?;
-    println!("best block hash by `get`: {}", bitcoin_block.header.prev_blockhash);
-    let bitcoin_tx: luckycoin::Transaction = rpc.get_by_id(&bitcoin_block.txdata[0].txid())?;
-    println!("tx by `get`: {}", bitcoin_tx.txid());
+    let luckycoin_block: luckycoin::Block = rpc.get_by_id(&best_block_hash)?;
+    println!("best block hash by `get`: {}", luckycoin_block.header.prev_blockhash);
+    let luckycoin_tx: luckycoin::Transaction = rpc.get_by_id(&luckycoin_block.txdata[0].txid())?;
+    println!("tx by `get`: {}", luckycoin_tx.txid());
 
     Ok(())
 }

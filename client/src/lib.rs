@@ -25,7 +25,7 @@ extern crate serde;
 pub extern crate jsonrpc;
 
 pub extern crate luckycoincore_rpc_json;
-pub use crate::json::bitcoin;
+pub use crate::json::luckycoin;
 pub use luckycoincore_rpc_json as json;
 use json::luckycoin::consensus::{Decodable, ReadExt};
 use json::luckycoin::hashes::hex::HexIterator;
