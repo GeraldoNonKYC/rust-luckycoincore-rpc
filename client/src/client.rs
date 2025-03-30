@@ -14,7 +14,7 @@ use std::iter::FromIterator;
 use std::path::PathBuf;
 use std::{fmt, result};
 
-use crate::{bitcoin, deserialize_hex};
+use crate::{luckycoin, deserialize_hex};
 use jsonrpc;
 use serde;
 use serde_json;
