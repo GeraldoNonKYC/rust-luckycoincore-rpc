@@ -8,4 +8,4 @@ members = [
 
 
 [patch.crates-io]
-bitcoin = { git = "https://github.com/blackluv/rust-luckycoin" }
+luckycoin = { git = "https://github.com/GeraldoNonKYC/rust-luckycoin" }
