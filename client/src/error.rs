@@ -11,8 +11,8 @@
 use std::{error, fmt, io};
 
 use crate::bitcoin;
-use crate::bitcoin::hashes::hex;
-use crate::bitcoin::secp256k1;
+use crate::luckycoin::hashes::hex;
+use crate::luckycoin::secp256k1;
 use jsonrpc;
 use serde_json;
 
@@ -22,10 +22,10 @@ pub enum Error {
     JsonRpc(jsonrpc::error::Error),
     Hex(hex::Error),
     Json(serde_json::error::Error),
-    BitcoinSerialization(bitcoin::consensus::encode::Error),
+    BitcoinSerialization(luckycoin::consensus::encode::Error),
     Secp256k1(secp256k1::Error),
     Io(io::Error),
-    InvalidAmount(bitcoin::util::amount::ParseAmountError),
+    InvalidAmount(luckycoin::util::amount::ParseAmountError),
     InvalidCookieFile,
     /// The JSON result had an unexpected structure.
     UnexpectedStructure,
@@ -51,8 +51,8 @@ impl From<serde_json::error::Error> for Error {
     }
 }
 
-impl From<bitcoin::consensus::encode::Error> for Error {
-    fn from(e: bitcoin::consensus::encode::Error) -> Error {
+impl From<luckycoin::consensus::encode::Error> for Error {
+    fn from(e: luckycoin::consensus::encode::Error) -> Error {
         Error::BitcoinSerialization(e)
     }
 }
@@ -69,8 +69,8 @@ impl From<io::Error> for Error {
     }
 }
 
-impl From<bitcoin::util::amount::ParseAmountError> for Error {
-    fn from(e: bitcoin::util::amount::ParseAmountError) -> Error {
+impl From<luckycoin::util::amount::ParseAmountError> for Error {
+    fn from(e: luckycoin::util::amount::ParseAmountError) -> Error {
         Error::InvalidAmount(e)
     }
 }

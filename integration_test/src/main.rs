@@ -20,11 +20,11 @@ use luckycoincore_rpc::jsonrpc::error::Error as JsonRpcError;
 use luckycoincore_rpc::{Auth, Client, Error, RpcApi};
 
 use crate::json::BlockStatsFields as BsFields;
-use bitcoin::consensus::encode::{deserialize, serialize};
-use bitcoin::hashes::hex::{FromHex, ToHex};
-use bitcoin::hashes::Hash;
-use bitcoin::secp256k1;
-use bitcoin::{
+use luckycoin::consensus::encode::{deserialize, serialize};
+use luckycoin::hashes::hex::{FromHex, ToHex};
+use luckycoin::hashes::Hash;
+use luckycoin::secp256k1;
+use luckycoin::{
     Address, Amount, EcdsaSighashType, Network, OutPoint, PackedLockTime, PrivateKey, Script,
     Sequence, SignedAmount, Transaction, TxIn, TxOut, Txid, Witness,
 };
@@ -232,13 +232,13 @@ fn test_get_blockchain_info(cl: &Client) {
 
 fn test_get_new_address(cl: &Client) {
     let addr = cl.get_new_address(None, Some(json::AddressType::Legacy)).unwrap();
-    assert_eq!(addr.address_type(), Some(bitcoin::AddressType::P2pkh));
+    assert_eq!(addr.address_type(), Some(luckycoin::AddressType::P2pkh));
 
     let addr = cl.get_new_address(None, Some(json::AddressType::Bech32)).unwrap();
-    assert_eq!(addr.address_type(), Some(bitcoin::AddressType::P2wpkh));
+    assert_eq!(addr.address_type(), Some(luckycoin::AddressType::P2wpkh));
 
     let addr = cl.get_new_address(None, Some(json::AddressType::P2shSegwit)).unwrap();
-    assert_eq!(addr.address_type(), Some(bitcoin::AddressType::P2sh));
+    assert_eq!(addr.address_type(), Some(luckycoin::AddressType::P2sh));
 }
 
 fn test_dump_private_key(cl: &Client) {

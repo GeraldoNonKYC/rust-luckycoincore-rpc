@@ -35,9 +35,9 @@ fn main_result() -> Result<(), Error> {
     println!("best block hash by height: {}", best_block_hash_by_height);
     assert_eq!(best_block_hash_by_height, best_block_hash);
 
-    let bitcoin_block: bitcoin::Block = rpc.get_by_id(&best_block_hash)?;
+    let bitcoin_block: luckycoin::Block = rpc.get_by_id(&best_block_hash)?;
     println!("best block hash by `get`: {}", bitcoin_block.header.prev_blockhash);
-    let bitcoin_tx: bitcoin::Transaction = rpc.get_by_id(&bitcoin_block.txdata[0].txid())?;
+    let bitcoin_tx: luckycoin::Transaction = rpc.get_by_id(&bitcoin_block.txdata[0].txid())?;
     println!("tx by `get`: {}", bitcoin_tx.txid());
 
     Ok(())
