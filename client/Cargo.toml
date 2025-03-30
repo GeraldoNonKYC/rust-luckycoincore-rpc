@@ -1,5 +1,5 @@
 [package]
-name = "bitcoincore-rpc"
+name = "luckycoincore-rpc"
 version = "0.16.0"
 authors = [
     "Steven Roose <steven@stevenroose.org>",
@@ -7,19 +7,19 @@ authors = [
     "Dawid Ciężarkiewicz <dpc@dpc.pw>",
 ]
 license = "CC0-1.0"
-homepage = "https://github.com/rust-bitcoin/rust-bitcoincore-rpc/"
-repository = "https://github.com/rust-bitcoin/rust-bitcoincore-rpc/"
-description = "RPC client library for the Bitcoin Core JSON-RPC API."
-keywords = ["crypto", "bitcoin", "bitcoin-core", "rpc"]
+homepage = "https://github.com/GeraldoNonKYC/rust-luckycoincore-rpc/"
+repository = "https://github.com/GeraldoNonKYC/rust-luckycoincore-rpc/"
+description = "RPC client library for the Luckycoin Core JSON-RPC API."
+keywords = ["crypto", "luckycoin", "luckycoin-core", "rpc"]
 readme = "README.md"
 edition = "2018"
 
 [lib]
-name = "bitcoincore_rpc"
+name = "luckycoincore_rpc"
 path = "src/lib.rs"
 
 [dependencies]
-bitcoincore-rpc-json = { version = "0.16.0", path = "../json" }
+luckycoincore-rpc-json = { version = "0.16.0", path = "../json" }
 
 log = "0.4.5"
 jsonrpc = "0.13.0"
