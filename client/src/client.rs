@@ -1258,7 +1258,7 @@ pub struct Client {
 
 impl fmt::Debug for Client {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "bitcoincore_rpc::Client({:?})", self.client)
+        write!(f, "luckycoincore_rpc::Client({:?})", self.client)
     }
 }
 
@@ -1305,7 +1305,7 @@ impl RpcApi for Client {
             .collect::<Result<Vec<_>>>()?;
         let req = self.client.build_request(&cmd, &raw_args);
         if log_enabled!(Debug) {
-            debug!(target: "bitcoincore_rpc", "JSON-RPC request: {} {}", cmd, serde_json::Value::from(args));
+            debug!(target: "luckycoincore_rpc", "JSON-RPC request: {} {}", cmd, serde_json::Value::from(args));
         }
 
         let resp = self.client.send_request(req).map_err(Error::from);
@@ -1319,13 +1319,13 @@ fn log_response(cmd: &str, resp: &Result<jsonrpc::Response>) {
         match resp {
             Err(ref e) => {
                 if log_enabled!(Debug) {
-                    debug!(target: "bitcoincore_rpc", "JSON-RPC failed parsing reply of {}: {:?}", cmd, e);
+                    debug!(target: "luckycoincore_rpc", "JSON-RPC failed parsing reply of {}: {:?}", cmd, e);
                 }
             }
             Ok(ref resp) => {
                 if let Some(ref e) = resp.error {
                     if log_enabled!(Debug) {
-                        debug!(target: "bitcoincore_rpc", "JSON-RPC error for {}: {:?}", cmd, e);
+                        debug!(target: "luckycoincore_rpc", "JSON-RPC error for {}: {:?}", cmd, e);
                     }
                 } else if log_enabled!(Trace) {
                     // we can't use to_raw_value here due to compat with Rust 1.29
@@ -1334,7 +1334,7 @@ fn log_response(cmd: &str, resp: &Result<jsonrpc::Response>) {
                     )
                     .unwrap();
                     let result = resp.result.as_ref().unwrap_or(&def);
-                    trace!(target: "bitcoincore_rpc", "JSON-RPC response for {}: {}", cmd, result);
+                    trace!(target: "luckycoincore_rpc", "JSON-RPC response for {}: {}", cmd, result);
                 }
             }
         }

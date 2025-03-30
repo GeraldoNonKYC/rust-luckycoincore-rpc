@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TESTDIR=/tmp/rust_bitcoincore_rpc_test
+TESTDIR=/tmp/rust_luckycoincore_rpc_test
 
 rm -rf ${TESTDIR}
 mkdir -p ${TESTDIR}/1 ${TESTDIR}/2

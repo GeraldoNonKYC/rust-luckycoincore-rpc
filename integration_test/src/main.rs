@@ -15,9 +15,9 @@ extern crate lazy_static;
 
 use std::collections::HashMap;
 
-use bitcoincore_rpc::json;
-use bitcoincore_rpc::jsonrpc::error::Error as JsonRpcError;
-use bitcoincore_rpc::{Auth, Client, Error, RpcApi};
+use luckycoincore_rpc::json;
+use luckycoincore_rpc::jsonrpc::error::Error as JsonRpcError;
+use luckycoincore_rpc::{Auth, Client, Error, RpcApi};
 
 use crate::json::BlockStatsFields as BsFields;
 use bitcoin::consensus::encode::{deserialize, serialize};
@@ -28,7 +28,7 @@ use bitcoin::{
     Address, Amount, EcdsaSighashType, Network, OutPoint, PackedLockTime, PrivateKey, Script,
     Sequence, SignedAmount, Transaction, TxIn, TxOut, Txid, Witness,
 };
-use bitcoincore_rpc::bitcoincore_rpc_json::{
+use luckycoincore_rpc::luckycoincore_rpc_json::{
     GetBlockTemplateModes, GetBlockTemplateRules, ScanTxOutRequest,
 };
 
@@ -45,7 +45,7 @@ struct StdLogger;
 
 impl log::Log for StdLogger {
     fn enabled(&self, metadata: &log::Metadata) -> bool {
-        metadata.target().contains("jsonrpc") || metadata.target().contains("bitcoincore_rpc")
+        metadata.target().contains("jsonrpc") || metadata.target().contains("luckycoincore_rpc")
     }
 
     fn log(&self, record: &log::Record) {
@@ -109,7 +109,7 @@ fn get_rpc_url() -> String {
     return std::env::var("RPC_URL").expect("RPC_URL must be set");
 }
 
-fn get_auth() -> bitcoincore_rpc::Auth {
+fn get_auth() -> luckycoincore_rpc::Auth {
     if let Ok(cookie) = std::env::var("RPC_COOKIE") {
         return Auth::CookieFile(cookie.into());
     } else if let Ok(user) = std::env::var("RPC_USER") {
