@@ -1344,7 +1344,7 @@ fn log_response(cmd: &str, resp: &Result<jsonrpc::Response>) {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::bitcoin;
+    use crate::luckycoin;
     use serde_json;
 
     #[test]

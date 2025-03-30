@@ -8,7 +8,7 @@
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 //
 
-use crate::bitcoin;
+use crate::luckycoin;
 use serde_json;
 
 use crate::client::Result;

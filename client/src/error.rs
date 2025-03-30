@@ -10,7 +10,7 @@
 
 use std::{error, fmt, io};
 
-use crate::bitcoin;
+use crate::luckycoin;
 use crate::luckycoin::hashes::hex;
 use crate::luckycoin::secp256k1;
 use jsonrpc;
